@@ -44,7 +44,9 @@
                 icon="compare"
                 class="q-mr-md"
                 @click="chtheme"
-              />
+              >
+                cu</q-btn
+              >
             </div>
           </div>
         </div>
@@ -78,14 +80,13 @@
           />
         </q-toolbar-title>
 
-        <!--<q-btn flat dense icon="shopping_cart" class="text-capitalize q-mr-md text-bold" label="Cart"/>-->
         <q-btn class="q-mr-md" dense round flat icon="shopping_cart">
           <q-badge color="red" class="text-bold" floating transparent>
             4
           </q-badge>
         </q-btn>
         <q-btn flat round dense icon="settings" class="q-mr-md" />
-        <q-btn flat round dense icon="compare" to="/" />
+        <q-btn flat round dense icon="compare" @click="chtheme" to="/" />
       </q-toolbar>
       <div class="bg-white text-grey-9 text-weight-bold shadow-transition">
         <div
@@ -263,23 +264,21 @@
 
 <script>
 import { ref, onMounted } from "vue";
+import { useQuasar } from "quasar";
+
 export default {
   setup() {
     const myRef = ref(null);
-
+    var $q = useQuasar();
     function chtheme() {
-      alert("fuck");
+      $q.dark.toggle();
+      alert("change");
     }
     // after the component has mounted into DOM:
     onMounted(() => {
       // we call "next()" method of our component
-      myRef.value.next();
     });
-    // calling before mount point might result in errors
-    // as Vue hasn't yet prepared the Vue reference
 
-    // we expose myRef to the scope so Vue
-    // can use it in the template as well
     return {
       myRef,
       chtheme,
@@ -294,6 +293,12 @@ export default {
 </script>
 
 <style>
+.body--light{}
+.body--dark{
+  
+}
+
+
 .q-drawer {
   /*background-image: url(https://demos.creative-tim.com/vue-material-dashboard/img/sidebar-2.32103624.jpg) !important;*/
   background-image: url("/images/lake.jpg") !important;
