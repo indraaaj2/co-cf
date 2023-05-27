@@ -57,7 +57,7 @@
         <img
           @click="$router.push('/')"
           class="cursor-pointer"
-          src="../assets/logo1.png"
+          src="../assets/logo-1.png"
           style="width: 3%"
         />
         <q-toolbar-title>

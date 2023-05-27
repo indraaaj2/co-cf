@@ -1,10 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="../assets/Women/1-front.jpg"
-      style="width: 200px; height: 200px"
-    />
+    <img src="/src/assets/1-front-1.jpg" style="width: 200px; height: 300px" />
   </q-page>
 </template>
 
