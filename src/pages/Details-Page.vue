@@ -527,7 +527,7 @@
 
 <script>
 export default {
-  name: "details",
+  name: "Details-Page",
   data() {
     return {
       slide: 1,
