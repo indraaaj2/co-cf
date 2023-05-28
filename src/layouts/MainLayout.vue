@@ -6,7 +6,7 @@
           <div class="col-sm-12 col-xs-12">
             <q-toolbar-title>
               <img
-                @click="$router.push('/home')"
+                @click="$router.push('')"
                 class="cursor-pointer float-left"
                 src="images/logo.png"
                 style="width: 12%"
@@ -22,7 +22,6 @@
             <q-input
               class="float-left q-mx-md full-width"
               square
-              bg-color="white"
               dense
               outlined
               v-model="text"
@@ -57,7 +56,7 @@
       <q-toolbar v-if="$q.platform.is.desktop" class="q-py-sm">
         <!--          <q-btn @click="left = !left" flat round dense icon="menu" class="q-mr-sm" />-->
         <img
-          @click="$router.push('/')"
+          @click="$router.push('')"
           class="cursor-pointer"
           src="../assets/logo-1.png"
           style="width: 3%"
@@ -70,9 +69,9 @@
           >
           <q-input
             class="float-left q-ml-xl"
+            :class="bgc"
             style="width: 650px"
             square
-            bg-color="white"
             dense
             outlined
             v-model="text"
@@ -87,6 +86,7 @@
         </q-btn>
         <q-btn flat round dense icon="settings" class="q-mr-md" />
         <q-btn flat round dense icon="compare" @click="chtheme" to="/" />
+        <ThTo />
       </q-toolbar>
       <div class="bg-white text-grey-9 text-weight-bold shadow-transition">
         <div
@@ -195,7 +195,7 @@
       </div>
     </q-header>
 
-    <q-page-container style="background-color: #f1f2f6">
+    <q-page-container>
       <router-view />
       <div class="q-mt-sm">
         <div class="row q-pa-md bg-primary">
@@ -262,42 +262,37 @@
   </q-layout>
 </template>
 
-<script>
-import { ref, onMounted } from "vue";
+<script setup>
+import { ref, onMounted, computed } from "vue";
 import { useQuasar } from "quasar";
+import ThTo from "../components/themetoggle.vue";
 
-export default {
-  setup() {
-    const myRef = ref(null);
-    var $q = useQuasar();
-    function chtheme() {
-      $q.dark.toggle();
-      alert("change");
-    }
-    // after the component has mounted into DOM:
-    onMounted(() => {
-      // we call "next()" method of our component
-    });
+var myRef = ref(),
+  $q = useQuasar(),
+  left = ref(false),
+  menu_cat_elc = ref(false),
+  menu_cat_tvs = ref(false),
+  menu_cat_men = ref(false),
+  text = ref("");
 
-    return {
-      myRef,
-      chtheme,
-      left: false,
-      menu_cat_elc: false,
-      menu_cat_tvs: false,
-      menu_cat_men: false,
-      text: "",
-    };
-  },
-};
+function chtheme() {
+  $q.dark.toggle();
+}
+
+var bgc = computed(() => {
+  return $q.dark.isActive ? "bg-dark" : "bg-white";
+});
+
+onMounted(() => {});
 </script>
 
 <style>
-.body--light{}
-.body--dark{
-  
+.body--light {
 }
-
+.body--dark {
+  background-color: black;
+  color: white;
+}
 
 .q-drawer {
   /*background-image: url(https://demos.creative-tim.com/vue-material-dashboard/img/sidebar-2.32103624.jpg) !important;*/
