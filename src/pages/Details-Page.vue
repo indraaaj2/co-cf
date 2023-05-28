@@ -527,7 +527,7 @@
 
 <script>
 export default {
-  name: "details.vue",
+  name: "details",
   data() {
     return {
       slide: 1,
