@@ -28,7 +28,6 @@
 <script>
 import { defineComponent } from "vue";
 import { useQuasar } from "quasar";
-var $q = useQuasar();
 
 export default defineComponent({
   name: "ThTo",
