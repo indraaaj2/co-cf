@@ -85,7 +85,7 @@
           </q-badge>
         </q-btn>
         <q-btn flat round dense icon="settings" class="q-mr-md" />
-        <q-btn flat round dense icon="compare" @click="chtheme" to="/" />
+
         <ThTo />
       </q-toolbar>
       <div class="bg-white text-grey-9 text-weight-bold shadow-transition">
@@ -272,7 +272,6 @@ var $q = useQuasar(),
   menu_cat_tvs = ref(false),
   menu_cat_men = ref(false),
   text = ref("");
-
 
 var bgc = computed(() => {
   return $q.dark.isActive ? "bg-dark" : "bg-white";
