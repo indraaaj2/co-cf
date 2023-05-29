@@ -1,32 +1,34 @@
 <template>
-  <label for="theme" class="theme">
-    <span class="theme__toggle-wrap">
-      <input
-        id="theme"
-        class="theme__toggle"
-        type="checkbox"
-        role="switch"
-        name="theme"
-        v-model="$q.dark.isActive"
-      />
+  <span class="theme__toggle-wrap">
+    <input
+      class="theme__toggle"
+      type="checkbox"
+      v-model="$q.dark.isActive"
+      @click="chtheme"
+    />
 
-      <span class="theme__icon">
-        <span class="theme__icon-part"></span>
-        <span class="theme__icon-part"></span>
-        <span class="theme__icon-part"></span>
-        <span class="theme__icon-part"></span>
-        <span class="theme__icon-part"></span>
-        <span class="theme__icon-part"></span>
-        <span class="theme__icon-part"></span>
-        <span class="theme__icon-part"></span>
-        <span class="theme__icon-part"></span>
-      </span>
+    <span class="theme__icon">
+      <span class="theme__icon-part"></span>
+      <span class="theme__icon-part"></span>
+      <span class="theme__icon-part"></span>
+      <span class="theme__icon-part"></span>
+      <span class="theme__icon-part"></span>
+      <span class="theme__icon-part"></span>
+      <span class="theme__icon-part"></span>
+      <span class="theme__icon-part"></span>
+      <span class="theme__icon-part"></span>
     </span>
-  </label>
-  <span></span>
+  </span>
 </template>
 
-<script setup></script>
+<script setup>
+import { useQuasar } from "quasar";
+
+var $q = useQuasar();
+function chtheme() {
+  $q.dark.toggle();
+}
+</script>
 
 <style scoped>
 * {

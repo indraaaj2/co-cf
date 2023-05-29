@@ -267,15 +267,12 @@ import { ref, onMounted, computed } from "vue";
 import { useQuasar } from "quasar";
 import ThTo from "../components/ThemeToggle.vue";
 
-var $q = useQuasar(),  
+var $q = useQuasar(),
   menu_cat_elc = ref(false),
   menu_cat_tvs = ref(false),
   menu_cat_men = ref(false),
   text = ref("");
 
-function chtheme() {
-  $q.dark.toggle();
-}
 
 var bgc = computed(() => {
   return $q.dark.isActive ? "bg-dark" : "bg-white";
