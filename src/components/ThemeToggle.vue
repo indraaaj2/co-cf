@@ -7,9 +7,9 @@
         type="checkbox"
         role="switch"
         name="theme"
-        :value="$q.dark"
+        v-model="$q.dark.isActive"
       />
-      <span class="theme__fill"></span>
+
       <span class="theme__icon">
         <span class="theme__icon-part"></span>
         <span class="theme__icon-part"></span>
@@ -23,16 +23,10 @@
       </span>
     </span>
   </label>
+  <span></span>
 </template>
 
-<script>
-import { defineComponent } from "vue";
-import { useQuasar } from "quasar";
-
-export default defineComponent({
-  name: "ThTo",
-});
-</script>
+<script setup></script>
 
 <style scoped>
 * {
@@ -75,15 +69,7 @@ body {
 .theme__icon {
   transition: transform var(--transDur) ease-in-out;
 }
-.theme__fill {
-  background-color: var(--bg);
-  display: block;
-  mix-blend-mode: difference;
-  position: fixed;
-  inset: 0;
-  height: 100%;
-  transform: translateX(-100%);
-}
+
 .theme__icon,
 .theme__toggle {
   z-index: 1;

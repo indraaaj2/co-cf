@@ -265,11 +265,9 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import { useQuasar } from "quasar";
-import ThTo from "../components/themetoggle.vue";
+import ThTo from "../components/ThemeToggle.vue";
 
-var myRef = ref(),
-  $q = useQuasar(),
-  left = ref(false),
+var $q = useQuasar(),  
   menu_cat_elc = ref(false),
   menu_cat_tvs = ref(false),
   menu_cat_men = ref(false),
@@ -287,8 +285,6 @@ onMounted(() => {});
 </script>
 
 <style>
-.body--light {
-}
 .body--dark {
   background-color: black;
   color: white;
