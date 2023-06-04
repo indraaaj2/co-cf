@@ -88,7 +88,7 @@
 
         <ThTo />
       </q-toolbar>
-      <div class="bg-white text-grey-9 text-weight-bold shadow-transition">
+      <div class="bg-brown-4 text-weight-bold shadow-transition" :class="bgc">
         <div
           class="row text-center items-center"
           :style="$q.platform.is.desktop ? 'height: 38px' : ''"
