@@ -32,6 +32,7 @@
           >
             <div class="text-subtitle1 text-grey-10 q-mt-sm q-pt-xs">
               Benling C200-BLK Smartwatch (Black Strap Free Size)
+              {{ $route.params.id }}
             </div>
             <div>
               <q-chip

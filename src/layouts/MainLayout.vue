@@ -56,7 +56,7 @@
       <q-toolbar v-if="$q.platform.is.desktop" class="q-py-sm">
         <!--          <q-btn @click="left = !left" flat round dense icon="menu" class="q-mr-sm" />-->
         <img
-          @click="$router.push('')"
+          @click="$router.push('#/')"
           class="cursor-pointer"
           src="../assets/logo-1.png"
           style="width: 3%"

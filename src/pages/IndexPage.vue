@@ -11,7 +11,7 @@
 
 <script setup>
 import { ref } from "vue";
-import Images from "../assets/Women/1-front.jpg?w=40&h=30";
+import Images from "../assets/Women/1-front-1.jpg?w=40&h=30";
 
 const fls = import.meta.glob("../assets/SKU/*/meta.txt");
 

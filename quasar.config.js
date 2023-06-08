@@ -1,5 +1,4 @@
 /* eslint-env node */
-
 /*
  * This file runs in a Node context (it's NOT transpiled by Babel), so use only
  * the ES6 features that are supported by your Node version. https://node.green/
@@ -48,14 +47,6 @@ module.exports = configure(function (/* ctx */) {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#build
     build: {
-      vitePlugins: [
-        [
-          import("vite-imagetools").then((x) => x.imagetools()),
-          {
-            /* plugin options */
-          },
-        ],
-      ],
       target: {
         browser: ["es2019", "edge88", "firefox78", "chrome87", "safari13.1"],
         node: "node16",
