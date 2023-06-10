@@ -544,14 +544,17 @@ var slide = ref(1),
   rat_1 = 1,
   aptf = ref(true);
 
-var l = [],
-  imsl = 0;
-for (var x in imgs) {
-  if (x.split("/")[3] === r.params.id) {
-    imsl++;
-    l.push({ u: new URL(x, import.meta.url).href, i: imsl });
+var l = computed(() => {
+  var l = [],
+    imsl = 0;
+  for (var x in imgs) {
+    if (x.split("/")[3] === r.params.id) {
+      imsl++;
+      l.push({ u: new URL(x, import.meta.url).href, i: imsl });
+    }
   }
-}
+  return l;
+});
 
 computed({
   win_width() {
