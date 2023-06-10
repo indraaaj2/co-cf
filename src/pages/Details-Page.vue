@@ -1,24 +1,26 @@
 <template>
   <div>
-    <div class="row bg-white q-mt-sm">
+    <div class="row q-mt-sm">
       <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
         <div class="q-pa-md">
-          <q-carousel swipeable animated v-model="slide" thumbnails infinite>
+          <q-carousel
+            v-model="slide"
+            swipeable
+            animated
+            thumbnails
+            infinite
+            :autoplay="aptf"
+            arrows
+            transition-prev="slide-right"
+            transition-next="slide-left"
+            @mouseenter="aptf = false"
+            @mouseleave="aptf = true"
+          >
             <q-carousel-slide
-              :name="1"
-              img-src="https://cdn.quasar.dev/img/mountains.jpg"
-            />
-            <q-carousel-slide
-              :name="2"
-              img-src="https://cdn.quasar.dev/img/parallax1.jpg"
-            />
-            <q-carousel-slide
-              :name="3"
-              img-src="https://cdn.quasar.dev/img/parallax2.jpg"
-            />
-            <q-carousel-slide
-              :name="4"
-              img-src="https://cdn.quasar.dev/img/quasar.jpg"
+              v-for="k in l"
+              :key="k.i"
+              :name="k.i"
+              :img-src="k.u"
             />
           </q-carousel>
         </div>
@@ -526,30 +528,39 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "Details-Page",
-  data() {
-    return {
-      slide: 1,
-      tab: "Specifications",
-      rating_point: 4.3,
-      rat_5: 5,
-      rat_4: 4,
-      rat_3: 3,
-      rat_2: 2,
-      rat_1: 1,
-    };
+<script setup>
+import { ref, onMounted, computed } from "vue";
+import { useRoute } from "vue-router";
+const imgs = import.meta.glob("../assets/SKU/*/*.png"),
+  r = useRoute();
+
+var slide = ref(1),
+  tab = ref("Specifications"),
+  rating_point = ref(4.3),
+  rat_5 = ref(5),
+  rat_4 = 4,
+  rat_3 = 3,
+  rat_2 = 2,
+  rat_1 = 1,
+  aptf = ref(true);
+
+var l = [],
+  imsl = 0;
+for (var x in imgs) {
+  if (x.split("/")[3] === r.params.id) {
+    imsl++;
+    l.push({ u: new URL(x, import.meta.url).href, i: imsl });
+  }
+}
+
+computed({
+  win_width() {
+    return this.$q.screen.width - 59;
   },
-  computed: {
-    win_width() {
-      return this.$q.screen.width - 59;
-    },
-    win_height() {
-      return this.$q.screen.height - 0;
-    },
+  win_height() {
+    return this.$q.screen.height - 0;
   },
-};
+});
 </script>
 
 <style scoped></style>
