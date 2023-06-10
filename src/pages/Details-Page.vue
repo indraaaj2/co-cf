@@ -531,9 +531,13 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import { useRoute } from "vue-router";
-const imgs = import.meta.glob("../assets/SKU/*/*.png"),
-  r = useRoute();
 
+const imgs = import.meta.glob("../assets/SKU/*/*.png", {
+    eager: true,
+    query: { w: 300 },
+  }),
+  r = useRoute();
+console.log(imgs);;
 var slide = ref(1),
   tab = ref("Specifications"),
   rating_point = ref(4.3),
