@@ -22,12 +22,8 @@
               :name="k.i"
               :img-src="k.u"
             />
-            <q-carousel-slide
-              v-for="(v, k) in imgs"
-              :key="k"
-              :name="k"
-              :img-src="v"
-            />
+
+            <q-carousel-slide key="k" name="k" :img-src="im" />
           </q-carousel>
         </div>
       </div>
@@ -537,14 +533,15 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import { useRoute } from "vue-router";
-
+import im from "../assets/SKU/1/1.png?w=100";
 const imgs = import.meta.glob("../assets/SKU/*/*.png", {
     eager: true,
-    as: "url",
-    query: { w: 300 },
+    query: { w: "300" },
   }),
   r = useRoute();
-console.log(imgs);
+
+console.log(im);
+
 var slide = ref(1),
   tab = ref("Specifications"),
   rating_point = ref(4.3),
