@@ -16,13 +16,6 @@
             @mouseenter="aptf = false"
             @mouseleave="aptf = true"
           >
-            <q-carousel-slide
-              v-for="k in l"
-              :key="k.i"
-              :name="k.i"
-              :img-src="k.u"
-            />
-
             <q-carousel-slide key="k" name="k" :img-src="im" />
           </q-carousel>
         </div>
@@ -531,16 +524,28 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from "vue";
+import { ref, onMounted, computed, onBeforeMount } from "vue";
 import { useRoute } from "vue-router";
 import im from "../assets/SKU/1/1.png?w=100";
+
 const imgs = import.meta.glob("../assets/SKU/*/*.png", {
-    eager: true,
     query: { w: "300" },
   }),
   r = useRoute();
+/*
+for (let ims of Object.values(imgs)) {
+  const import_statment = ims();
+  const url = await import_statment;
+  //sponsorHtml += `<img src="${url}" /><br/>`
+  console.log(url);
+}
+  */
+var chul = 5;
+onBeforeMount(async () => {
+  return (chul = 10);
+});
 
-console.log(im);
+console.log(chul);
 
 var slide = ref(1),
   tab = ref("Specifications"),
