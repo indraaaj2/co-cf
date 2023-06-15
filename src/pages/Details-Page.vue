@@ -6,6 +6,7 @@ import im from "../assets/SKU/1/1.png?w=100";
 const imgs = import.meta.glob("../assets/SKU/*/*.png", {
     eager: true,
     as: "url",
+    query: { w: "300" },
   }),
   r = useRoute();
 
@@ -61,6 +62,12 @@ computed({
             @mouseleave="aptf = true"
           >
             <q-carousel-slide key="1" name="2" :img-src="im" />
+            <q-carousel-slide
+              v-for="p in igs"
+              :key="p.path"
+              :name="p.path"
+              :img-src="p.component"
+            />
           </q-carousel>
         </div>
       </div>
