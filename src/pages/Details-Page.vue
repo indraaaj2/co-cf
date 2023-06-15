@@ -1,3 +1,47 @@
+<script setup>
+import { ref, onMounted, computed, onBeforeMount } from "vue";
+import { useRoute } from "vue-router";
+import im from "../assets/SKU/1/1.png?w=100";
+
+const imgs = import.meta.glob("../assets/SKU/*/*.png", {
+    eager: true,
+    as: "url",
+  }),
+  r = useRoute();
+
+const igs = Object.keys(imgs).map((key) => {
+  return {
+    path: key,
+    component: imgs[key]().then((x) => {
+      return x;
+    }),
+  };
+});
+
+console.log(igs);
+
+var slide = ref(1),
+  tab = ref("Specifications"),
+  rating_point = ref(4.3),
+  rat_5 = ref(5),
+  rat_4 = 4,
+  rat_3 = 3,
+  rat_2 = 2,
+  rat_1 = 1,
+  aptf = ref(true);
+
+computed({
+  win_width() {
+    return this.$q.screen.width - 59;
+  },
+  win_height() {
+    return this.$q.screen.height - 0;
+  },
+});
+</script>
+
+<style scoped></style>
+
 <template>
   <div>
     <div class="row q-mt-sm">
@@ -16,7 +60,7 @@
             @mouseenter="aptf = false"
             @mouseleave="aptf = true"
           >
-            <q-carousel-slide key="k" name="k" :img-src="im" />
+            <q-carousel-slide key="1" name="2" :img-src="im" />
           </q-carousel>
         </div>
       </div>
@@ -521,62 +565,5 @@
       </div>
     </div>
   </div>
+  <p>funtoosh</p>
 </template>
-
-<script setup>
-import { ref, onMounted, computed, onBeforeMount } from "vue";
-import { useRoute } from "vue-router";
-import im from "../assets/SKU/1/1.png?w=100";
-
-const imgs = import.meta.glob("../assets/SKU/*/*.png", {
-    query: { w: "300" },
-  }),
-  r = useRoute();
-/*
-for (let ims of Object.values(imgs)) {
-  const import_statment = ims();
-  const url = await import_statment;
-  //sponsorHtml += `<img src="${url}" /><br/>`
-  console.log(url);
-}
-  */
-var chul = 5;
-onBeforeMount(async () => {
-  return (chul = 10);
-});
-
-console.log(chul);
-
-var slide = ref(1),
-  tab = ref("Specifications"),
-  rating_point = ref(4.3),
-  rat_5 = ref(5),
-  rat_4 = 4,
-  rat_3 = 3,
-  rat_2 = 2,
-  rat_1 = 1,
-  aptf = ref(true);
-
-var l = computed(() => {
-  var l = [],
-    imsl = 0;
-  for (var x in imgs) {
-    if (x.split("/")[3] === r.params.id) {
-      imsl++;
-      l.push({ u: new URL(x, import.meta.url).href, i: imsl });
-    }
-  }
-  return l;
-});
-
-computed({
-  win_width() {
-    return this.$q.screen.width - 59;
-  },
-  win_height() {
-    return this.$q.screen.height - 0;
-  },
-});
-</script>
-
-<style scoped></style>
