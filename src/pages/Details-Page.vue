@@ -1,7 +1,9 @@
 <script setup>
 import { ref, onMounted, computed, onBeforeMount } from "vue";
 import { useRoute } from "vue-router";
-import im from "../assets/SKU/1/1.png?w=100";
+import im from "../assets/SKU/1/0.png?w=200";
+import im1 from "../assets/SKU/1/1.png?w=200";
+import im2 from "../assets/SKU/1/2.png?w=200";
 
 const imgs = import.meta.glob("../assets/SKU/*/*.png", {
     eager: true,
@@ -13,15 +15,13 @@ const imgs = import.meta.glob("../assets/SKU/*/*.png", {
 const igs = Object.keys(imgs).map((key) => {
   return {
     path: key,
-    component: imgs[key]().then((x) => {
-      return x;
-    }),
+    component: imgs[key],
   };
 });
 
 console.log(igs);
 
-var slide = ref(1),
+var slide = ref(0),
   tab = ref("Specifications"),
   rating_point = ref(4.3),
   rat_5 = ref(5),
@@ -61,13 +61,9 @@ computed({
             @mouseenter="aptf = false"
             @mouseleave="aptf = true"
           >
-            <q-carousel-slide key="1" name="2" :img-src="im" />
-            <q-carousel-slide
-              v-for="p in igs"
-              :key="p.path"
-              :name="p.path"
-              :img-src="p.component"
-            />
+            <q-carousel-slide key="0" name="0" :img-src="im" />
+            <q-carousel-slide key="1" name="1" :img-src="im1" />
+            <q-carousel-slide key="2" name="2" :img-src="im2" />
           </q-carousel>
         </div>
       </div>
@@ -572,5 +568,4 @@ computed({
       </div>
     </div>
   </div>
-  <p>funtoosh</p>
 </template>
